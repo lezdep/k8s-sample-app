@@ -5,6 +5,17 @@ version := "0.1"
 
 scalaVersion := "2.11.8"
 
+lazy val Versions = new {
+  val scala = "2.11.8"
+}
+
+crossScalaVersions := Seq("2.11.8", "2.12.1")
+
+libraryDependencies ++= Seq(
+  "org.scala-lang"      %  "scala-library"                % Versions.scala,
+  "org.scala-lang"      %  "scala-reflect"                % Versions.scala
+)
+
 /*
 val sharedSettings: Seq[Def.Setting[_]] = Defaults.coreDefaultSettings ++ Seq(
   organization := "org.lezdep",

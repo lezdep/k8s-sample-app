@@ -1,4 +1,5 @@
-FROM anapsix/alpine-java
+#FROM anapsix/alpine-java
+FROM openjdk:8
 
 ADD target/scala-2.11/k8s-sample-app_2.11-0.1.jar /
 

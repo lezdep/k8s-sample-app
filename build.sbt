@@ -16,6 +16,28 @@ libraryDependencies ++= Seq(
   "org.scala-lang"      %  "scala-reflect"                % Versions.scala
 )
 
+resolvers ++= Seq(
+  Resolver.mavenLocal,
+  Resolver.typesafeRepo("releases"),
+  Resolver.sonatypeRepo("releases"),
+  Resolver.bintrayRepo("websudos", "oss-releases"),
+  Resolver.jcenterRepo
+)
+
+scalacOptions in ThisBuild ++= Seq(
+  "-Xexperimental",
+  "-language:experimental.macros",
+  "-language:postfixOps",
+  "-language:implicitConversions",
+  "-language:reflectiveCalls",
+  "-language:higherKinds",
+  "-language:existentials",
+  "-Xlint",
+  "-deprecation",
+  "-feature",
+  "-unchecked"
+)
+
 /*
 val sharedSettings: Seq[Def.Setting[_]] = Defaults.coreDefaultSettings ++ Seq(
   organization := "org.lezdep",

@@ -1,3 +1,4 @@
+import sbtassembly.AssemblyPlugin.autoImport.assemblyMergeStrategy
 
 name := "k8s-sample-app"
 
@@ -37,6 +38,14 @@ scalacOptions in ThisBuild ++= Seq(
   "-feature",
   "-unchecked"
 )
+
+assemblyMergeStrategy in assembly := {
+  case PathList("META-INF", "io.netty.versions.properties") => MergeStrategy.filterDistinctLines
+  case PathList("log4j.properties") => MergeStrategy.first
+  case x => val oldStrategy = (assemblyMergeStrategy in assembly).value; oldStrategy(x)
+}
+
+mainClass in assembly := Some("org.lezdep.k8s.sample.Main")
 
 /*
 val sharedSettings: Seq[Def.Setting[_]] = Defaults.coreDefaultSettings ++ Seq(
